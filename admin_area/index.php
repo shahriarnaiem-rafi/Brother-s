@@ -64,7 +64,7 @@
                 </p>
             </div>
             <div class="button text-center">
-                <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">Insert Products</a></button>
+                <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
                 <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">View Product </a></button>
                 <button class="my-3"><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert
                         Categories</a></button>
