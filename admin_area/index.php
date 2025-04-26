@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-3">
         <!-- ata dom ar moto kaj kore .   jtay click korbo oita show korte get[ar bitor id diye] -->
         <?php
         if (isset($_GET['insert_category'])) {
