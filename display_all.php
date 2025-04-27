@@ -109,7 +109,8 @@ include('./functions/common_function.php');
                     <!-- fetching products -->
                     <?php
                     // calling function
-                    getProducts();
+                    // getProducts();
+                    get_all_product();
                     getUniquecategories();
                     getuniqbrands();
                     ?>
@@ -159,10 +160,8 @@ include('./functions/common_function.php');
     </div>
 
 
-    <?php include("./includes/footer.php");?>
-
-
-
+   <!-- footer -->
+<?php include("./includes/footer.php");?>
     <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 

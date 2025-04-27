@@ -106,10 +106,11 @@ include('./functions/common_function.php');
             <div class="col-md-10">
                 <!-- products -->
                 <div class="row">
+                    
                     <!-- fetching products -->
                     <?php
                     // calling function
-                    getProducts();
+                    view_details();
                     getUniquecategories();
                     getuniqbrands();
                     ?>
@@ -159,7 +160,7 @@ include('./functions/common_function.php');
     </div>
 
 
-    <?php include("./includes/footer.php");?>
+    <?php include("./includes/footer.php"); ?>
 
 
 
