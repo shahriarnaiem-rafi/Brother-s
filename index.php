@@ -44,13 +44,13 @@ include('./functions/common_function.php');
                             <a class="nav-link" href="#">Registar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
+                            <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i><sup><?php cart_item();?></sup></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"> Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Total Price:- 100 </a>
+                            <a class="nav-link" href="#">Total Price:- <?php total_cart_price(); ?>/- </a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -80,7 +80,9 @@ include('./functions/common_function.php');
                 </div>
             </div>
         </nav>
-
+        <?php 
+        cart();
+        ?>
 
         <!-- second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
@@ -112,6 +114,11 @@ include('./functions/common_function.php');
                     getProducts();
                     getUniquecategories();
                     getuniqbrands();
+
+
+
+                    // $ip = getIPAddress();
+                    // echo 'User Real IP Address - ' . $ip;
                     ?>
 
 
@@ -159,7 +166,7 @@ include('./functions/common_function.php');
     </div>
 
 
-    <?php include("./includes/footer.php");?>
+    <?php include("./includes/footer.php"); ?>
 
 
 
