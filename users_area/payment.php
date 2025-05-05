@@ -10,7 +10,11 @@ include('../functions/common_function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>brother's | payment</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<style>
+    body{
+        overflow-x: hidden;
+    }
+</style>
 </head>
 <body>
     <!-- php code to acces user id -->
