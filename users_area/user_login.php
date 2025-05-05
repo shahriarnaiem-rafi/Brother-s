@@ -9,6 +9,7 @@
     <style>
         body {
             background-color: #f8f9fa;
+            overflow-x: hidden;
         }
 
         .form-container {
@@ -75,3 +76,29 @@
 </body>
 
 </html>
+<?php
+    if(isset($_POST['user_login'])){
+        $user_username=$_POST['user_username'];
+        $user_password=$_POST['user_password'];
+        $select_query="select * from user_table  where username='$user_username'";
+
+        $result=mysqli_query($con,$select_query);
+        $row_count=mysqli_num_rows($result);
+        $row_data=mysqli_fetch_assoc($result);
+
+        if($row_count>0){
+            if(password_verify($user_password,$row_data['user_password'])){
+                echo "<script>alert('Log in success full')</script>";
+
+            }
+            else{
+                echo "<script>alert('invallid user')</script>";
+  
+            }
+        }
+        else{
+            echo "<script>alert('invallid user')</script>";
+        }
+    }
+
+?>
