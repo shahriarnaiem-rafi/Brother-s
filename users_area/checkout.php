@@ -1,5 +1,5 @@
 <?php
-include('includes/connect.php');
+include('../includes/connect.php');
 
 ?>
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ include('includes/connect.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brother's Shop\ check out</title>
     <!-- bootstrap -->
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- fontawsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -100,7 +100,7 @@ include('includes/connect.php');
                 <div class="row">
                     <?php
                     if (!isset($_SESSION['username'])) {
-                        include('users_area/user_login.php');
+                        include('user_login.php');
                     }
                     else{
                         include ('payment.php');
@@ -116,11 +116,11 @@ include('includes/connect.php');
     </div>
 
 
-    <?php include("./includes/footer.php"); ?>
+    <?php include("../includes/footer.php"); ?>
 
 
 
-    <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

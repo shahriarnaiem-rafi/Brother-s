@@ -1,44 +1,77 @@
-<!-- user_login.php -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Brother's Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow">
-                <div class="card-header bg-info text-white text-center">
-                    <h4>Login to Your Account</h4>
-                </div>
-                <div class="card-body">
-                    <form action="user_login.php" method="post">
-                        <div class="mb-3">
-                            <label for="user_email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="user_email" name="user_email" required>
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        input[type="submit"] {
+            background-color: #17a2b8 !important;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #138496 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid my-5">
+        <h2 class="text-center mb-4"> User Login</h2>
+        <div class="row d-flex align-items-center justify-content-center mt-5">
+            <div class="col-lg-12 col-xl-6">
+                <div class="form-container">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <!-- name -->
+                        <div class="form-outline mb-3">
+                            <label for="user_username" class="form-label">Username</label>
+                            <input type="text" name="user_username" id="user_username" class="form-control"
+                                placeholder="Please enter your username" autocomplete="off" required>
                         </div>
-                        <div class="mb-3">
+                       
+                        
+                        <!-- pass -->
+                        <div class="form-outline mb-3">
                             <label for="user_password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="user_password" name="user_password" required>
+                            <input type="password" name="user_password" id="user_password" class="form-control"
+                                placeholder="Please enter your password" autocomplete="off" required>
                         </div>
-                        <div class="d-grid">
-                            <button type="submit" name="user_login" class="btn btn-info text-white">Login</button>
+                        
+                      
+
+                        <div class="mt-4 pt-2 text-center">
+                            <input type="submit" value="Login" name="user_login"
+                                class="py-2 px-4 border-0 rounded-3">
+                            <p class="small fw-bold pt-3 mb-0">Don't  have an account? <a href="user_registration.php"
+                                    class="text-danger">Register</a></p>
                         </div>
-                        <div class="text-center mt-3">
-                            <small>Don't have an account? <a href="user_registration.php">Register here</a></small>
-                        </div>
+
                     </form>
                 </div>
-            </div><br>
+            </div>
         </div>
     </div>
-</div>
 
-<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

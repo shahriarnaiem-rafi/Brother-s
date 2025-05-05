@@ -203,7 +203,7 @@ include('./functions/common_function.php');
                         </h4>
                          <input type='submit' value='Continue' class='bg-info border-0 px-3 py-2 mx-3'
                                                     name='continue_shopping'>
-                        <button class='bg-secondary border-0 px-3 py-2'><a href='checkout.php' class='text-light text-decoration-none'>Checkout </a></button>";
+                        <button class='bg-secondary border-0 px-3 py-2'><a href='./users_area/checkout.php' class='text-light text-decoration-none'>Checkout </a></button>";
                         } else {
                             echo "  <input type='submit' value='Continue Shopping' class='bg-info border-0 px-3 py-2 mx-3'
                                                     name='continue_shopping'>";
