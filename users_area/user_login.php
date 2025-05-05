@@ -1,10 +1,15 @@
+<?php
+include "../includes/connect.php";
+include "../functions/common_function.php";
+@session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration Form</title>
+    <title>Login Form</title>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -48,21 +53,20 @@
                             <input type="text" name="user_username" id="user_username" class="form-control"
                                 placeholder="Please enter your username" autocomplete="off" required>
                         </div>
-                       
-                        
+
+
                         <!-- pass -->
                         <div class="form-outline mb-3">
                             <label for="user_password" class="form-label">Password</label>
                             <input type="password" name="user_password" id="user_password" class="form-control"
                                 placeholder="Please enter your password" autocomplete="off" required>
                         </div>
-                        
-                      
+
+
 
                         <div class="mt-4 pt-2 text-center">
-                            <input type="submit" value="Login" name="user_login"
-                                class="py-2 px-4 border-0 rounded-3">
-                            <p class="small fw-bold pt-3 mb-0">Don't  have an account? <a href="user_registration.php"
+                            <input type="submit" value="Login" name="user_login" class="py-2 px-4 border-0 rounded-3">
+                            <p class="small fw-bold pt-3 mb-0">Don't have an account? <a href="user_registration.php"
                                     class="text-danger">Register</a></p>
                         </div>
 
@@ -77,28 +81,48 @@
 
 </html>
 <?php
-    if(isset($_POST['user_login'])){
-        $user_username=$_POST['user_username'];
-        $user_password=$_POST['user_password'];
-        $select_query="select * from user_table  where username='$user_username'";
+if (isset($_POST['user_login'])) {
+    global $con;
+    $user_username = $_POST['user_username'];
+    $user_password = $_POST['user_password'];
+    $select_query = "select * from user_table  where username='$user_username'";
 
-        $result=mysqli_query($con,$select_query);
-        $row_count=mysqli_num_rows($result);
-        $row_data=mysqli_fetch_assoc($result);
+    $result = mysqli_query($con, $select_query);
+    $row_count = mysqli_num_rows($result);
+    $row_data = mysqli_fetch_assoc($result);
+    $user_ip = getIPAddress();
+    // cart item
+    $select_query_cart = "select * from cart_details  where ip_address='$user_ip'";
+    $select_cart = mysqli_query($con, $select_query_cart);
+    $row_count_cart = mysqli_num_rows($select_cart);
 
-        if($row_count>0){
-            if(password_verify($user_password,$row_data['user_password'])){
+
+
+    if ($row_count > 0) {
+        $_SESSION['username']=$user_username;
+        if (password_verify($user_password, $row_data['user_password'])) {
+            // echo "<script>alert('Log in success full')</script>";
+            if ($row_count == 1 and $row_count_cart == 0) {
+                $_SESSION['username']=$user_username;
+
                 echo "<script>alert('Log in success full')</script>";
+                echo "<script>window.open('profile.php')</script>";
 
             }
             else{
-                echo "<script>alert('invallid user')</script>";
-  
+                $_SESSION['username']=$user_username;
+
+                echo "<script>alert('Log in success full')</script>";
+                echo "<script>window.open('./payment.php')</script>";
+
             }
-        }
-        else{
+        } else {
             echo "<script>alert('invallid user')</script>";
+
         }
+    } else {
+        echo "<script>alert('invallid user')</script>";
     }
+}
 
 ?>

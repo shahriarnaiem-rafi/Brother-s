@@ -1,7 +1,7 @@
 <?php
 include('includes/connect.php');
 include('./functions/common_function.php');
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,11 @@ include('./functions/common_function.php');
     <!-- fontawsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            overflow-x:hidden ;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,10 +46,10 @@ include('./functions/common_function.php');
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Registar</a>
+                            <a class="nav-link" href="./users_area/user_registration.php">Registar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"> <i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
+                            <a class="nav-link" href="cart.php"> <i class="fa-solid fa-cart-shopping"></i><sup>1</sup></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"> Cart</a>
@@ -85,12 +90,27 @@ include('./functions/common_function.php');
         <!-- second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">welcome Guest</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./users_area/user_login.php">Log in</a>
-                </li>
+               
+                <?php
+                if (!isset($_SESSION['username'])) {
+                    echo " <li class='nav-item'>
+                    <a class='nav-link' href='#'>welcome Guest</a>
+                </li>";
+                } else {
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='#'>Welcome  ".$_SESSION['username']."</a>
+                </li>";
+                }
+                if (!isset($_SESSION['username'])) {
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='./users_area/user_login.php'>Log in</a>
+                </li>";
+                } else {
+                    echo "<li class='nav-item'>
+                    <a class='nav-link' href='./users_area/logout.php'>Log out</a>
+                </li>";
+                }
+                ?>
             </ul>
 
         </nav>
