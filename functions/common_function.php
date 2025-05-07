@@ -58,7 +58,7 @@ function get_all_product()
                 $product_id = $row['product_id'];
                 $product_title = $row['product_title'];
                 $product_description = $row['product_description'];
-                
+
                 $product_image1 = $row['product_image1'];
                 $product_price = $row['product_price'];
                 $category_id = $row['category_id'];
@@ -370,27 +370,56 @@ function cart_item()
 }
 // total price function
 
-function total_cart_price(){
+function total_cart_price()
+{
     global $con;
-    $ip=getIPAddress();
-    $total_price=0;
-    $cart_query="select * from cart_details where ip_address='$ip'";
-    $result=mysqli_query($con,$cart_query);
+    $ip = getIPAddress();
+    $total_price = 0;
+    $cart_query = "select * from cart_details where ip_address='$ip'";
+    $result = mysqli_query($con, $cart_query);
 
-    while($row=mysqli_fetch_array($result)){
-        $product_id=$row['product_id'];
-        $select_products= "select * from product where product_id='$product_id'";
-        $result_products=mysqli_query($con,$select_products);
-        while($row_product_price=mysqli_fetch_array($result_products)){
-            $product_price=array($row_product_price['product_price']);
-            $product_values=array_sum($product_price);
-            $total_price+=$product_values;
+    while ($row = mysqli_fetch_array($result)) {
+        $product_id = $row['product_id'];
+        $select_products = "select * from product where product_id='$product_id'";
+        $result_products = mysqli_query($con, $select_products);
+        while ($row_product_price = mysqli_fetch_array($result_products)) {
+            $product_price = array($row_product_price['product_price']);
+            $product_values = array_sum($product_price);
+            $total_price += $product_values;
+
+        }
 
     }
-
-}
-echo $total_price;
+    echo $total_price;
 }
 
-// dynapic patch
+// get user order details
+function get_user_order_details()
+{
+    global $con;
+    $username = $_SESSION['username'];
+    $get_details = "select * from user_table where username='$username'";
+    $result_query = mysqli_query($con, $get_details);
+    while ($row_query = mysqli_fetch_array($result_query)) {
+        $user_id = $row_query['user_id'];
+        if (!isset($_GET['edit_account'])) {
+            if (!isset($_GET['my_orders'])) {
+                if (!isset($_GET['delete_account'])) {
+                    $get_orders = "select  * from user_orders where user_id=$user_id and order_status='pending'";
+                    $result_orders_query = mysqli_query($con, $get_orders);
+                    $row_count = mysqli_num_rows($result_orders_query);
+                    if ($row_count > 0) {
+                        echo "<h3 class='text-center'> You have <span class='text-danger text-success  mt-5 mb-2'>$row_count<span> Pending orders</h3>
+                                                       <p class='text-center'> <a href='profile.php?my_orders' class='text-dark'>Order Details</a></p>";
+                    }
+                    else{
+                        echo "<h3 class='text-center'> You have Zero Pending orders</h3>
+                        <p class='text-center'> <a href='../index.php' class='text-dark'>Explore Product</a></p>";  
+                    }
+
+                }
+            }
+        }
+    }
+}
 ?>
