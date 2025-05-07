@@ -56,19 +56,3 @@ $empty_cart = "delete from cart_details where ip_address='$ip'";
 $result_delete = mysqli_query($con, $empty_cart);
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <h2>order</h2>
-</body>
-
-</html>
