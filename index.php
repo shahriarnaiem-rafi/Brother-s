@@ -45,9 +45,18 @@ session_start();
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./users_area/user_registration.php">Registar</a>
-                        </li>
+                       
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo "<li class='nav-item'>
+                            <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+                        </li>";
+                        }else{
+                            echo "<li class='nav-item'>
+                            <a class='nav-link' href='./users_area/user_registration.php'> Registation</a>
+                        </li>";
+                        }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="cart.php"> <i
                                     class="fa-solid fa-cart-shopping"></i><sup><?php cart_item(); ?></sup></a>
@@ -93,7 +102,7 @@ session_start();
         <!-- second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
-               
+
                 <?php
                 if (!isset($_SESSION['username'])) {
                     echo " <li class='nav-item'>
@@ -101,7 +110,7 @@ session_start();
                 </li>";
                 } else {
                     echo "<li class='nav-item'>
-                    <a class='nav-link' href='#'>Welcome  ".$_SESSION['username']."</a>
+                    <a class='nav-link' href='#'>Welcome  " . $_SESSION['username'] . "</a>
                 </li>";
                 }
                 if (!isset($_SESSION['username'])) {
