@@ -37,6 +37,7 @@
                 $get_order_details = "select * from user_orders where user_id='$user_id'";
 
                 $result_orders = mysqli_query($con, $get_order_details);
+                $number = 1;
                 while ($row_orders = mysqli_fetch_assoc($result_orders)) {
                     $order_id = $row_orders['order_id'];
                     $amount_due = $row_orders['amount_due'];
@@ -45,12 +46,12 @@
                     $order_date = $row_orders['order_date'];
                     $order_status = $row_orders['order_status'];
 
-                    if ($order_status = 'pending') {
+                    if ($order_status == "pending") {
                         $order_status = "incomplete";
                     } else {
                         $order_status = "complete";
                     }
-                    $number = 1;
+
                     echo "
                     <tr>
                     <td>$number</td>
@@ -59,12 +60,18 @@
                     <td>$invoice_number</td>
                     <td>$order_date</td>
 
-                    <td>$order_status</td>
-                    <td><a href='confirm_payment.php?order_id=$order_id'>Confirm</a></td>
-                </tr>
-                    ";
+                    <td>$order_status</td>";
+                    ?>
+                    <?php
+                    if ($order_status == "complete") {
+                        echo "<td>Paid</td>";
+                    } else {
+                        echo "<td> <a href='confirm_payment.php?order_id=$order_id' >Confirm</a></td>
+                </tr>";
+                    }
                     $number++;
                 }
+
 
                 ?>
 
