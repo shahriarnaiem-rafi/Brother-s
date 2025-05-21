@@ -1,3 +1,7 @@
+<?php
+include('../includes/connect.php');
+include('../functions/common_function.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +23,14 @@
 
         .admin_image {
             width: 100px;
+            object-fit: contain;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+        .product_img{
+            width: 10%;
             object-fit: contain;
         }
     </style>
@@ -64,12 +76,15 @@
                 </p>
             </div>
             <div class="button text-center">
-                <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
-                <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">View Product </a></button>
+                <button class="my-3"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert
+                        Products</a></button>
+                <button class="my-3"><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View
+                        Product </a></button>
                 <button class="my-3"><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert
                         Categories</a></button>
                 <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">view Categories</a></button>
-                <button class="my-3"> <a href="index.php?insert_brand" class="nav-link text-light bg-info my-1">Insert Brand</a></button>
+                <button class="my-3"> <a href="index.php?insert_brand" class="nav-link text-light bg-info my-1">Insert
+                        Brand</a></button>
                 <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">view Brand</a></button>
                 <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">All orders </a></button>
                 <button class="my-3"><a href="" class="nav-link text-light bg-info my-1">All Payments</a></button>
@@ -87,6 +102,9 @@
         if (isset($_GET['insert_brand'])) {
             include('insert_brands.php');
         }
+        if (isset($_GET['view_products'])) {
+            include('view_products.php');
+        }
         ?>
 
     </div>
@@ -94,10 +112,7 @@
 
 
 
-    <div class=" footer bg-info p-3 text-center">
-        <p> All writes reserve @ Designd by Shahriar</p>
-    </div>
-    </div>
+    <?php include("../includes/footer.php") ?>
 
 
 
