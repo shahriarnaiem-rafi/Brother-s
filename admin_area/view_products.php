@@ -44,8 +44,8 @@
 
                 ?></td>
                 <td><?php echo $status ?></td>
-                <th><a href='#'><i class='fa-solid fa-pen-to-square'></i></a></th>
-                <th><a href='#'><i class='fa-solid fa-trash'></i></a></th>
+                <td><a href='index.php?edit_products'><i class='fa-solid fa-pen-to-square'></i></a></td>
+                <td><a href='#'><i class='fa-solid fa-trash'></i></a></td>
             </tr>
 
             <?php
